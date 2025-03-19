@@ -13,10 +13,19 @@ function agregarAmigo() {
         return;
     }
 
+    // Validar si el nombre ya existe en el array
+    if (amigos.includes(nombre)) {
+        alert("Este nombre ya ha sido añadido. Por favor, ingresa un nombre diferente.");
+        return;
+    }
+
     amigos.push(nombre); // Agregar al array
     input.value = ""; // Limpiar el campo de entrada
     actualizarLista();
+
+
 }
+
 
 
 // La función actualizarLista() nos permitira actualizar la lista de amigos.
@@ -32,8 +41,19 @@ function actualizarLista() {
 }
 
 
+// La función sortearAmigo() nos permitira elegir un amigo aleatorio que se encuentra dentro de la lista de amigos.
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("La lista está vacía. Agregue nombres antes de sortear.");
+        return;
+    }
 
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    const amigoSorteado = amigos[indiceAleatorio];
 
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<li>El amigo secreto es: <strong>${amigoSorteado}</strong></li>`;
+}
 
 
 
